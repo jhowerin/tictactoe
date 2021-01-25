@@ -11,6 +11,16 @@ theBoard = {'7': ' ' , '8': ' ' , '9': ' ' ,
 
 board_keys = []
 
+Xname = input("You will be the X. What is your name? ")
+# Here the user is asked to enter the name first
+
+print("Good Luck ! ", Xname)
+
+Oname = input("You will be the O. What is your name? ")
+# Here the user is asked to enter the name first
+
+print("Good Luck ! ", Oname)
+
 for key in theBoard:
     board_keys.append(key)
 
@@ -28,7 +38,7 @@ def printBoard(board):
 # Now we'll write the main function which has all the gameplay functionality.
 def game():
 
-    turn = 'X'
+    turn = Xname
     count = 0
 
 
@@ -39,7 +49,10 @@ def game():
         move = input()        
 
         if theBoard[move] == ' ':
-            theBoard[move] = turn
+            if turn == Xname:
+                theBoard[move] = 'X'
+            else:
+                theBoard[move] = 'O'
             count += 1
         else:
             print("That place is already filled.\nMove to which place?")
@@ -94,10 +107,10 @@ def game():
             print("It's a Tie!!")
 
         # Now we have to change the player after every move.
-        if turn =='X':
-            turn = 'O'
+        if turn == Xname:
+            turn = Oname
         else:
-            turn = 'X'        
+            turn = Xname        
     
     # Now we will ask if player wants to restart the game or not.
     restart = input("Do want to play Again?(y/n)")
